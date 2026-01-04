@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kumpulan Video</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.video-card {
+    background: #1b1b1b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-title {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    background: #222;
+}
+
+video {
+    width: 100%;
+    display: block;
+    background: black;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎬 Kumpulan Video</h1>
+
+<div class="video-grid">
+
+    <div class="video-card">
+        <div class="video-title">Judul Video 1</div>
+        <video controls onclick="fullscreen(this)">
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="video-card">
+        <div class="video-title">Judul Video 2</div>
+        <video controls onclick="fullscreen(this)">
+            <source src="video2.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="video-card">
+        <div class="video-title">Judul Video 3</div>
+        <video controls onclick="fullscreen(this)">
+            <source src="video3.mp4" type="video/mp4">
+        </video>
+    </div>
+
+</div>
+
+<script>
+function fullscreen(video) {
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+    }
+}
+</script>
+
+</body>
+</html>
