@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kumpulan Video</title>
 
 <style>
@@ -14,34 +15,47 @@ body {
 
 h1 {
     text-align: center;
-    padding: 20px;
+    padding: 10px;
+    font-size: 16px;
 }
 
+/* GRID PADAT */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding: 6px;
 }
 
+/* CARD */
 .video-card {
     background: #1b1b1b;
-    border-radius: 10px;
+    border-radius: 6px;
     overflow: hidden;
 }
 
 .video-title {
-    padding: 10px;
+    font-size: 10px;
     text-align: center;
-    font-weight: bold;
+    padding: 4px;
     background: #222;
 }
 
+/* THUMBNAIL KECIL */
 video {
     width: 100%;
+    height: 80px;
+    object-fit: cover;
     display: block;
     background: black;
     cursor: pointer;
+}
+
+/* HP kecil */
+@media (max-width: 480px) {
+    video {
+        height: 70px;
+    }
 }
 </style>
 </head>
@@ -53,36 +67,47 @@ video {
 <div class="video-grid">
 
     <div class="video-card">
-        <div class="video-title">Judul Video 1</div>
-        <video controls onclick="fullscreen(this)">
+        <div class="video-title">Video 1</div>
+        <video onclick="playFullscreen(this)" preload="metadata">
             <source src="video1.mp4" type="video/mp4">
         </video>
     </div>
 
     <div class="video-card">
-        <div class="video-title">Judul Video 2</div>
-        <video controls onclick="fullscreen(this)">
+        <div class="video-title">Video 2</div>
+        <video onclick="playFullscreen(this)" preload="metadata">
             <source src="video2.mp4" type="video/mp4">
         </video>
     </div>
 
     <div class="video-card">
-        <div class="video-title">Judul Video 3</div>
-        <video controls onclick="fullscreen(this)">
+        <div class="video-title">Video 3</div>
+        <video onclick="playFullscreen(this)" preload="metadata">
             <source src="video3.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="video-card">
+        <div class="video-title">Video 4</div>
+        <video onclick="playFullscreen(this)" preload="metadata">
+            <source src="video4.mp4" type="video/mp4">
         </video>
     </div>
 
 </div>
 
 <script>
-function fullscreen(video) {
+function playFullscreen(video) {
+    // Play video
+    video.play();
+
+    // Fullscreen support HP & browser
     if (video.requestFullscreen) {
         video.requestFullscreen();
+    } else if (video.webkitEnterFullscreen) {
+        video.webkitEnterFullscreen(); // Safari iOS
     } else if (video.webkitRequestFullscreen) {
         video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
     }
 }
 </script>
